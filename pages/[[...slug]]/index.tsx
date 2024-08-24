@@ -15,17 +15,25 @@ export default function Slug({
 export const getServerSideProps = (async ({
 	req,
 }: GetServerSidePropsContext) => {
-	// const currentDomain =
-	// 	process.env.NEXT_PUBLIC_DOMAIN || "http://localhost:3000"
-	// const fullUrl = `${currentDomain}/api/${req.url}`
+	const currentDomain =
+		process.env.NEXT_PUBLIC_DOMAIN || "http://localhost:3000"
+	const fullUrl = `${currentDomain}/api/content`
 
-	// console.log(fullUrl)
+	console.log(fullUrl)
 
-	// const res = await fetch(new URL(fullUrl))
-	// const data: PageContent = await res.json()
-	const data = await fetchData()
+	try {
+		const res = await fetch(new URL(fullUrl), {
+			method: "POST",
+			body: JSON.stringify({ language: "en-CA", path: "home" }),
+		})
+		const data: PageContent = await res.json()
+		// const data = await fetchData()
 
-	return { props: { data } }
+		return { props: { data } }
+	} catch (error) {
+		console.error(error)
+		throw new Error("Failed to fetch data")
+	}
 }) satisfies GetServerSideProps<{ data: PageContent }>
 
 const fetchData = async (): Promise<PageContent> => {

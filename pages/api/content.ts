@@ -18,7 +18,7 @@ export default function handler(
 	req: NextApiRequest,
 	res: NextApiResponse<PageContent>
 ) {
-	const { language, path }: Request = req.body
+	const { language, path }: Request = JSON.parse(req.body)
 
 	const page = MOCKED_PAGES[language][path]
 

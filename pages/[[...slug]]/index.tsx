@@ -13,18 +13,19 @@ export default function Slug({
 }
 
 export const getServerSideProps = (async ({
-	req,
+	locale,
+	resolvedUrl,
 }: GetServerSidePropsContext) => {
 	const currentDomain =
 		process.env.NEXT_PUBLIC_DOMAIN || "http://localhost:3000"
 	const fullUrl = `${currentDomain}/api/content`
 
-	console.log(fullUrl)
+	console.log(resolvedUrl)
 
 	try {
 		const res = await fetch(new URL(fullUrl), {
 			method: "POST",
-			body: JSON.stringify({ language: "en-CA", path: "home" }),
+			body: JSON.stringify({ language: locale, path: resolvedUrl }),
 		})
 		const data: PageContent = await res.json()
 		// const data = await fetchData()

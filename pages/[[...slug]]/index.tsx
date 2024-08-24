@@ -4,7 +4,7 @@ import {
 	InferGetServerSidePropsType,
 } from "next"
 import { PageContent } from "../api/content"
-import { MOCKED_PAGES } from "../mock/pages"
+import { MOCKED_PAGES } from "../../mock/pages"
 
 export default function Slug({
 	data,

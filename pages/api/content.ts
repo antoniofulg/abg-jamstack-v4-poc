@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next"
-import { MOCKED_PAGES } from "../mock/pages"
+import { MOCKED_PAGES } from "../../mock/pages"
 
 type Request = {
 	language: string

@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from "next"
 import { MOCKED_PAGES } from "../../mock/pages"
 
 type Request = {
-	language: string
+	locale: string
 	path: string
 }
 
@@ -18,9 +18,9 @@ export default function handler(
 	req: NextApiRequest,
 	res: NextApiResponse<PageContent>
 ) {
-	const { language, path }: Request = JSON.parse(req.body)
+	const { locale, path }: Request = JSON.parse(req.body)
 
-	const page = MOCKED_PAGES[language][path]
+	const page = MOCKED_PAGES[locale][path]
 
 	res.status(200).json({ page })
 }

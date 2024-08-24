@@ -27,7 +27,7 @@ export const getServerSideProps = (async ({
 	try {
 		const res = await fetch(new URL(fullUrl), {
 			method: "POST",
-			body: JSON.stringify({ language: locale, path: resolvedUrl }),
+			body: JSON.stringify({ locale, path: resolvedUrl }),
 		})
 		const props: PageContent = await res.json()
 

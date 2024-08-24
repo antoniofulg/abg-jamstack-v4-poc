@@ -22,5 +22,9 @@ export default function handler(
 
 	const page = MOCKED_PAGES[locale][path]
 
+	if (!page) {
+		return res.status(404).json({ page: MOCKED_PAGES[locale]["404"] })
+	}
+
 	res.status(200).json({ page })
 }

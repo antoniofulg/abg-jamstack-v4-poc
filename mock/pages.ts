@@ -25,15 +25,15 @@ export const MOCKED_PAGES: Record<
 			title: "Accueil",
 			content: "Bienvenue sur notre site web!",
 		},
-		"/bathtubs": {
+		"/baignoires": {
 			title: "Baignoires",
 			content: "Découvrez nos baignoires!",
 		},
-		"/showers": {
+		"/douches": {
 			title: "Douches",
 			content: "Découvrez nos douches!",
 		},
-		"/doors": {
+		"/portes": {
 			title: "Portes",
 			content: "Découvrez nos portes!",
 		},

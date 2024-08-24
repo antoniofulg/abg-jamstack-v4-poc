@@ -10,6 +10,7 @@ type Request = {
 export type Navigation = {
 	title: string
 	path: string
+	localePath: Record<string, string>
 }
 
 type NavigationResponse = {

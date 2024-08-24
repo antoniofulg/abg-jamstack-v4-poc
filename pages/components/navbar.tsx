@@ -30,7 +30,11 @@ export default function Navbar({ navigation }: Props) {
 							locale !== "en-CA" && "text-gray-500",
 							"text-xl"
 						)}
-						href={asPath}
+						href={
+							navigation.find(({ path }) => path === asPath)?.localePath[
+								"en-CA"
+							] || asPath
+						}
 						locale="en-CA"
 					>
 						English
@@ -40,7 +44,11 @@ export default function Navbar({ navigation }: Props) {
 							locale !== "fr-CA" && "text-gray-500",
 							"text-xl"
 						)}
-						href={asPath}
+						href={
+							navigation.find(({ path }) => path === asPath)?.localePath[
+								"fr-CA"
+							] || asPath
+						}
 						locale="fr-CA"
 					>
 						French

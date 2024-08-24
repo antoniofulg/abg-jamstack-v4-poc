@@ -5,36 +5,60 @@ export const MOCKED_NAVIGATION: Record<string, Navigation[]> = {
 		{
 			title: "Home",
 			path: "/",
+			localePath: {
+				"fr-CA": "/",
+			},
 		},
 		{
 			title: "Bathtubs",
 			path: "/bathtubs",
+			localePath: {
+				"fr-CA": "/baignoires",
+			},
 		},
 		{
 			title: "Showers",
 			path: "/showers",
+			localePath: {
+				"fr-CA": "/douches",
+			},
 		},
 		{
 			title: "Doors",
 			path: "/doors",
+			localePath: {
+				"fr-CA": "/portes",
+			},
 		},
 	],
 	"fr-CA": [
 		{
 			title: "Accueil",
 			path: "/",
+			localePath: {
+				"en-CA": "/",
+			},
 		},
 		{
 			title: "Baignoires",
-			path: "/bathtubs",
+			path: "/baignoires",
+			localePath: {
+				"en-CA": "/bathtubs",
+			},
 		},
 		{
 			title: "Douches",
-			path: "/showers",
+			path: "/douches",
+			localePath: {
+				"en-CA": "/showers",
+			},
 		},
 		{
 			title: "Portes",
-			path: "/doors",
+			path: "/portes",
+			localePath: {
+				"en-CA": "/doors",
+			},
 		},
 	],
 }

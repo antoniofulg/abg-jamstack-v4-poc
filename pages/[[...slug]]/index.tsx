@@ -4,12 +4,16 @@ import {
 	InferGetServerSidePropsType,
 } from "next"
 import { PageContent } from "../api/content"
-import { MOCKED_PAGES } from "../../mock/pages"
 
 export default function Slug({
-	data,
+	page: { title, content },
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-	return <main>{JSON.stringify(data)}</main>
+	return (
+		<main className="flex flex-col gap-4">
+			<h1 className="text-5xl">{title}</h1>
+			<p className="text-xl">{content}</p>
+		</main>
+	)
 }
 
 export const getServerSideProps = (async ({
@@ -20,24 +24,16 @@ export const getServerSideProps = (async ({
 		process.env.NEXT_PUBLIC_DOMAIN || "http://localhost:3000"
 	const fullUrl = `${currentDomain}/api/content`
 
-	console.log(resolvedUrl)
-
 	try {
 		const res = await fetch(new URL(fullUrl), {
 			method: "POST",
 			body: JSON.stringify({ language: locale, path: resolvedUrl }),
 		})
-		const data: PageContent = await res.json()
-		// const data = await fetchData()
+		const props: PageContent = await res.json()
 
-		return { props: { data } }
+		return { props }
 	} catch (error) {
 		console.error(error)
 		throw new Error("Failed to fetch data")
 	}
-}) satisfies GetServerSideProps<{ data: PageContent }>
-
-const fetchData = async (): Promise<PageContent> => {
-	// Simulating a delay with Promise.resolve (replace with real fetch logic)
-	return Promise.resolve({ page: MOCKED_PAGES["en-CA"]["home"] })
-}
+}) satisfies GetServerSideProps<PageContent>

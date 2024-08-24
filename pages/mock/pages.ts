@@ -1,4 +1,4 @@
-const MOCKED_PAGES: Record<
+export const MOCKED_PAGES: Record<
 	string,
 	Record<string, { title: string; content: string }>
 > = {

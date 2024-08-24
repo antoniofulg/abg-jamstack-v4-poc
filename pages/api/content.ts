@@ -1,12 +1,13 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next"
+import { MOCKED_PAGES } from "../mock/pages"
 
 type Request = {
 	language: string
 	path: string
 }
 
-type Response = {
+export type PageContent = {
 	page: {
 		title: string
 		content: string
@@ -15,7 +16,7 @@ type Response = {
 
 export default function handler(
 	req: NextApiRequest,
-	res: NextApiResponse<Response>
+	res: NextApiResponse<PageContent>
 ) {
 	const { language, path }: Request = req.body
 
